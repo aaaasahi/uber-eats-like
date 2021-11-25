@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       resources :restaurants do
         resources :foods, only: %i[index]
       end
+      resources :line_foods, only: %i[index create]
+      put 'line_foods/replace', to: 'line_foods#replace'
     end
   end
 end
