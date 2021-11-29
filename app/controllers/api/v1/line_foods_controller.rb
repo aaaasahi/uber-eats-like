@@ -10,9 +10,8 @@ module Api
             new_restaurant: Food.find(params[:food_id]).restaurant.name,
           }, status: :not_acceptable
         end
-      end
-
-      set_line_food(@ordered_food)
+        
+        set_line_food(@ordered_food)
 
         if @line_food.save
           render json: {
@@ -21,9 +20,12 @@ module Api
         else
           render json: {}, status: :internal_server_error
         end
+
       end
 
+
       private
+
       def set_food
         @ordered_food = Food.find(params[:food_id])
       end
